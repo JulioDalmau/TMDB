@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import url('')  Seleccionar una fuente */
+
+body {
+  background-color: black;
+}
