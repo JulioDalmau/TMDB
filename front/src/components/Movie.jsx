@@ -6,7 +6,24 @@ import { arrayUnion, doc, updateDoc } from "firebase/firestore";
 
 export const Movie = ({ item, id }) => {
   const [favourite, setFavourite] = useState(false);
+  const [saved, setSaved] = useState(false);
   const { user } = UserAuth();
+
+  const movieId = doc(db, 'users', `${user?.email}`)
+
+  const saveMovieAndTv = async () => {
+    if(user?.email) {
+      setFavourite(!favourite);
+      setSaved(true);
+      await updateDoc(movieId, {
+        favoritesMovAndTv: arrayUnion({
+          id: item.id,
+          title: item.title,
+          img: item.backdrop_path,
+        })
+      })
+    } 
+  }
 
   return (
     <div
@@ -22,7 +39,7 @@ export const Movie = ({ item, id }) => {
         <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center h-full text-center">
           {item?.title}
         </p>
-        <p className="absolute top-4 left-4 text-gray-300">
+        <p  onClick={saveMovieAndTv} className="absolute top-4 left-4 text-gray-300">
           {favourite ? <BsStarFill /> : <BsStar />}
         </p>
       </div>
