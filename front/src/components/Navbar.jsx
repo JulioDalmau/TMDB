@@ -15,7 +15,6 @@ export const Navbar = () => {
     }
   };
 
-  
   return (
     <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
       <Link to="/">
@@ -32,7 +31,10 @@ export const Navbar = () => {
               My Account
             </button>
           </Link>
-          <button onClick={handleLogout} className="text-white bg-neutral-700 font-semibold px-1 md:px-6 py-2 rounded cursor-pointer">
+          <button
+            onClick={handleLogout}
+            className="text-white bg-neutral-700 font-semibold px-1 md:px-6 py-2 rounded cursor-pointer"
+          >
             LOG OUT
           </button>
         </div>

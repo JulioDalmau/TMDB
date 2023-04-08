@@ -37,12 +37,16 @@ export function AuthContextProvider({ children }) {
     return () => unsuscribe();
   });
 
+  
   return (
     <AuthContext.Provider value={{ signUp, logIn, logOut, user }}>
       {children}
     </AuthContext.Provider>
   );
 }
+
+
+
 
 export function UserAuth() {
   return useContext(AuthContext);

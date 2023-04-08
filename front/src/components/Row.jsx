@@ -20,23 +20,32 @@ export const Row = ({ title, fetchURL, rowID }) => {
   ));
 
   const handleClickLeft = () => {
-    let scroll = document.getElementById('scroll' + rowID)
-    scroll.scrollLeft = scroll.scrollLeft - 500
-  }
+    let scroll = document.getElementById("scroll" + rowID);
+    scroll.scrollLeft = scroll.scrollLeft - 500;
+  };
   const handleClickRight = () => {
-    let scroll = document.getElementById('scroll' + rowID)
-    scroll.scrollLeft = scroll.scrollLeft + 500
-  }
+    let scroll = document.getElementById("scroll" + rowID);
+    scroll.scrollLeft = scroll.scrollLeft + 500;
+  };
 
   return (
     <>
       <h2 className="text-white font-bold md:text-xl p-4">{title}</h2>
       <div className="relative flex items-center group">
-        <AiOutlineLeft onClick={handleClickLeft} className="text-white text-4xl left-0  absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block" />
-        <div id={"scroll" + rowID} className="w-full overflow-x-scroll whitespace-nowrap scrollbar-hide scroll-smooth relative">
+        <AiOutlineLeft
+          onClick={handleClickLeft}
+          className="text-white text-4xl left-0  absolute opacity-50 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+        />
+        <div
+          id={"scroll" + rowID}
+          className="w-full overflow-x-scroll whitespace-nowrap scrollbar-hide scroll-smooth relative"
+        >
           {moviesAndTv}
         </div>
-        <AiOutlineRight onClick={handleClickRight} className="text-white text-4xl right-0  absolute opacity-70 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block" />
+        <AiOutlineRight
+          onClick={handleClickRight}
+          className="text-white text-4xl right-0  absolute opacity-70 hover:opacity-100 cursor-pointer z-10 hidden group-hover:block"
+        />
       </div>
     </>
   );
