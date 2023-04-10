@@ -1,11 +1,15 @@
 import React from "react";
-import { Link, useNavigate, Typography, styled } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import {AppBar, Toolbar} from '@mui/material';
-import IconButton from '@mui/material/IconButton';
+import { createTheme, AppBar, Toolbar, Button, Typography} from '@mui/material';
 import star from "../assets/starburst.png" 
+import styled from "@emotion/styled";
 
 
+const CustomNavbar = styled(Toolbar)(({theme}) => ({
+  backgroundColor: theme.palette.dark.main,
+  justifyContent: "space-around"
+}) )
 
 export const Navbar = () => {
   const { user, logOut } = UserAuth();
@@ -44,14 +48,14 @@ export const Navbar = () => {
   return (
     
     <AppBar>
-      <Toolbar color="black">
-          <IconButton
+      <CustomNavbar >
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
             sx={{ mr: 2}}
-          ></IconButton>
+          ></IconButton> */}
 
     <div className="flex items-center justify-between p-4 z-[100] w-full absolute">
       <Link to="/">
@@ -64,9 +68,9 @@ export const Navbar = () => {
       {user?.email ? (
         <div>
           <Link to="/myaccount">
-            <button className="text-white bg-neutral-700 font-semibold px-1 md:px-6 py-2 rounded cursor-pointer mx-2">
+            <Button className="text-white bg-neutral-700 font-semibold px-1 md:px-6 py-2 rounded cursor-pointer mx-2">
               My Account
-            </button>
+            </Button>
           </Link>
           <button
             onClick={handleLogout}
@@ -90,7 +94,7 @@ export const Navbar = () => {
         </div>
       )}
     </div>
-    </Toolbar>
+    </CustomNavbar>
             </AppBar>
 
      
